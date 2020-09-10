@@ -1,3 +1,6 @@
+## Escuela Colombiana de Ingeniería
+## Nicolás Aguilera Contreras
+## LinkRepo : https://github.com/NicolasAguilera9906/parcial/
 
 ## Escuela Colombiana de Ingeniería
 ## Arquitecturas de Software - ARSW
