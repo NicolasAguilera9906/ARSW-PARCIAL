@@ -17,7 +17,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 public class PrimesFinderTool {
 
     private static final BigInteger LOWEST_NUMBER=new BigInteger(String.valueOf(1));
-    private static final BigInteger MAXIMUM_NUMBER=new BigInteger(String.valueOf(10000));
+    private static final BigInteger MAXIMUM_NUMBER=new BigInteger(String.valueOf(10));
     private static final int NUM_OF_THREADS=4;
     private static final BigInteger AMOUNT_OF_NUMBERS=MAXIMUM_NUMBER.subtract(LOWEST_NUMBER).add(new BigInteger(String.valueOf(1)));
     private static AtomicInteger amountOfNumbersProcessed = new AtomicInteger();
@@ -47,20 +47,22 @@ public class PrimesFinderTool {
             
             System.out.println(primesResultSet.getPrimes());
 
-            while(AMOUNT_OF_NUMBERS.compareTo(BigInteger.valueOf(amountOfNumbersProcessed.get())) > 0){
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                if (MouseMovementMonitor.getInstance().getTimeSinceLastMouseMovement()>10000){
+            while(AMOUNT_OF_NUMBERS.compareTo(BigInteger.valueOf(amountOfNumbersProcessed.get())) >= 0){
+                System.out.println(amountOfNumbersProcessed);
+                if (!(MouseMovementMonitor.getInstance().getTimeSinceLastMouseMovement()>10000)){
                     for(int i=0;i<NUM_OF_THREADS;i++) {
                         threads[i].pause();
                     }
                     System.out.println("PAUSA!");
                     System.out.println("Primos encontrados hasta el momento");
                     System.out.println(primesResultSet.getPrimes());
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+
                 else{
                     System.out.println("Trabajando");
                     for(int i=0;i<NUM_OF_THREADS;i++) {
