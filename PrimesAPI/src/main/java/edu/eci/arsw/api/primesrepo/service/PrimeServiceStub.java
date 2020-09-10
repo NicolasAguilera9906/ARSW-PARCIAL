@@ -4,6 +4,7 @@ import edu.eci.arsw.api.primesrepo.model.FoundPrime;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author Santiago Carrillo
@@ -15,7 +16,7 @@ import java.util.List;
 public class PrimeServiceStub implements PrimeService
 {
 
-    private List<FoundPrime> foundPrimes;
+    private List<FoundPrime> foundPrimes = new CopyOnWriteArrayList<>();
 
     @Override
     public void addFoundPrime( FoundPrime foundPrime ) throws FoundPrimeException {
