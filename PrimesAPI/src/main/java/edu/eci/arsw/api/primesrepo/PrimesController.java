@@ -6,10 +6,8 @@ import edu.eci.arsw.api.primesrepo.service.PrimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -50,9 +48,27 @@ public class PrimesController
         }
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> addSuspect(@RequestBody List<FoundPrime> primes) {
+        try {
+            for(FoundPrime prime : primes){
+                primeService.addFoundPrime(prime);
+            }
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (HttpMessageNotReadableException | FoundPrimeException hx){
+            Logger.getLogger(PrimesController.class.getName()).log(Level.SEVERE, null, hx);
+            return new ResponseEntity<>("Existe un error en el formato del JSON de la funcion", HttpStatus.BAD_REQUEST);
+        }
+    }
 
-    //TODO implement additional methods provided by PrimeService
-
-
-
+    @RequestMapping(value = "/{primenumber}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateSuspect(@RequestBody FoundPrime prime) {
+        try {
+            primeService.addFoundPrime(prime);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (FoundPrimeException e) {
+            Logger.getLogger(PrimesController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+    }
 }

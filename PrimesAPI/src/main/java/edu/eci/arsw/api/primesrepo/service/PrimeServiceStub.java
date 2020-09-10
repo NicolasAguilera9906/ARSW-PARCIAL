@@ -18,9 +18,18 @@ public class PrimeServiceStub implements PrimeService
     private List<FoundPrime> foundPrimes;
 
     @Override
-    public void addFoundPrime( FoundPrime foundPrime )
-    {
-        //TODO
+    public void addFoundPrime( FoundPrime foundPrime ) throws FoundPrimeException {
+        if(foundPrime==null){
+            throw new FoundPrimeException("El primo es nulo");
+        }
+        for(FoundPrime prime : foundPrimes){
+            if(prime.getPrime().equals(foundPrime.getPrime())){
+                if(!(prime.getUser().equals(foundPrime.getUser()))){
+                    throw new FoundPrimeException("No se permite añadir el mismo primo con dos usuarios diferentes");
+                }
+            }
+        }
+        foundPrimes.add(foundPrime);
     }
 
     @Override
