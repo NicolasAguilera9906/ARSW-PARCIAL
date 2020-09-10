@@ -1,0 +1,5 @@
+edu\eci\arsw\api\primesrepo\model\FoundPrime.class
+edu\eci\arsw\api\primesrepo\PrimesrepoApplication.class
+edu\eci\arsw\api\primesrepo\service\PrimeServiceStub.class
+edu\eci\arsw\api\primesrepo\PrimesController.class
+edu\eci\arsw\api\primesrepo\service\PrimeService.class

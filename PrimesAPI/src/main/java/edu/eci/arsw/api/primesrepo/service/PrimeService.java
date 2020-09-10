@@ -8,13 +8,15 @@ import java.util.List;
  * @author Santiago Carrillo
  * 2/22/18.
  */
+
+
 public interface PrimeService
 {
 
     void addFoundPrime( FoundPrime foundPrime );
 
-    List<FoundPrime> getFoundPrimes();
+    List<FoundPrime> getFoundPrimes() throws FoundPrimeException;
 
-    FoundPrime getPrime( String prime );
+    FoundPrime getPrime( String prime ) throws FoundPrimeException;
 
 }
