@@ -1,9 +1,8 @@
-# Nicolás Aguilera Contreras
-# Link Repositorio : https://github.com/NicolasAguilera9906/parcial/
-
 ## Escuela Colombiana de Ingeniería
 ## Arquitecturas de Software - ARSW
 ## Parcial Primer Tercio
+
+### Nicolás Aguilera Contreras
  
 Con el fin de contribuír al desarrollo de sistemas criptográficos cada vez más robustos, se quiere desarrollar una plataforma distribuida que apoye la búsqueda de nuevos números primos (usado en los mecanismos de seguridad basados en llave pública). Para tal fin, usted va a desarrollar una herramienta de escritorio que se distibuirá entre las personas que quieran contribuir con los tiempos ociosos de sus equipos de cómputo (cuando el equipo está prendido pero sin actividad alguna), y la cual aprovechará dichos espacios ociosos para realizar la búsqueda.
 
